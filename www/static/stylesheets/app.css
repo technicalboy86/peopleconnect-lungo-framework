@@ -1,0 +1,256 @@
+body {
+	background-color: #333;
+	color: #fff;
+	font: 16px/1.25 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	letter-spacing: -0.05em;
+}
+body * { 	-webkit-font-smoothing: antialiased;  -webkit-touch-callout: none;   -webkit-user-select: none; }
+body .text.thin { 	font-weight: 300; }
+body .text.normal { 	font-weight: 400; }
+body .text.bold { 	font-weight: 700; }
+a { color: inherit; } 
+
+body > aside { 	background-color: #333; 	color: #00afe3; 	font-size: 1.2em;}
+body > aside > header {height:80px;}
+body > aside > header > nav > img{ color:white; padding-top:20px; width:20%; text-align:center; font-weight:bold; }
+body > aside > article > ul > li { height:50px; font-size: 1.0em;}
+body > aside > article > ul > li:active { color:#eee;}
+
+body > section > header { background-color: #000; color:#fff; height: 130px; }
+body > section > header > nav.on-left { }
+body > section > header > nav.on-right {  }
+body > section > header > nav.logo {width:90%; float:left; margin-left:5% !important; margin-top:20px;text-align:center;}
+body > section > header > nav.logo > img {width:70%; text-align:center; font-weight:bold; font-size: 1.4em;}
+body > section > header > div.banner { background:#222; border-radius:5px; width:100%; height:27px; padding:1px;}
+body > section > header > div.banner > div.app_name { background-image:url("../../img/1px.png"); background-repeat:repeat-x; width:98%; height:25px; margin-left:1%; text-align:center; line-height:25px;}
+
+body > section > article {background:#000; height:100%; color:#fff;}
+body > section > article > div.main_btn { width:100%; background:#222; text-align:center; line-height:45px; height:65px; font-size:1.5em; font-weight:bold;}
+body > section > article > div.main_btn:active { color:#999;}
+
+body > section > footer { background-color: #000; color:fff; height:50px;}
+body > section > footer > a { color:#fff;font-size:2.2em; background:#000; width:50px; margin-left:10px;}
+body > section > footer > a .active  { color: #ddd; }
+
+body > section > nav#options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#s_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#i_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#f_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#c_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#j_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#h_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#n_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#p_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#d_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#fc_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#pc_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#pd_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#u_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#pi_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#pl_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#cp_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+body > section > nav#ep_options-icons {background:rgba(22,22,22,0.8); border-radius:5px;}
+
+body > section#instant_connection > article {background:black;}
+body > section#instant_connection > article > div.page_title { width:100%; background:#222; text-align:center; line-height:55px; height:55px; font-size:1.5em; font-weight:bold;}
+body > section#instant_connection > article > div.e_policy_holder { width:100%; padding-left:5%; background:#222; height:40px; line-height:35px; font-size:1.2em; margin-top:10px;}
+body > section#instant_connection > article > div.e_policy_holder > a.arrow_up_icon { float:right; font-weight:bold; margin-right:10px;}
+body > section#instant_connection > article > div.e_policy_holder > a.arrow_down_icon { float:right;font-weight:bold; margin-right:10px;}
+body > section#instant_connection > article > div.content { background:#333;}
+body > section#instant_connection > article > div.content > ul > li { border-bottom:1px solid #000;}
+body > section#instant_connection > article > div.content > ul > li > div.detail {width:70%;}
+body > section#instant_connection > article > div.content > ul > li > div.form { float:right; padding-top:10px; background:#333;}
+body > section#instant_connection > article > div.content > ul > li > div.form > fieldset {background:#333; border-bottom:2px; solid #333;}
+body > section#instant_connection > article > div.content > ul > li > div.form > fieldset > input {background:#333;}
+body > section#instant_connection > article > button { color:white; background:#444; margin-top:10px; border-radius:5px; width:60%; margin-left:20%;}
+body > section#instant_connection > article > button:active {width:61%;}
+
+body > section#future_connection > article {background:black;}
+body > section#future_connection > article > div.page_title { width:100%; background:#222; text-align:center; line-height:35px; height:35px; font-size:1.2em; font-weight:bold;}
+body > section#future_connection > article > div.form { padding-left:10px; padding-right:10px;}
+body > section#future_connection > article > div.form > label { color:#fff; font-size:0.9em;}
+body > section#future_connection > article > div.form > fieldset { padding:0px; line-height:25px; height:25px;}
+body > section#future_connection > article > div.form > fieldset.m_textarea { padding:0px; height:80px;}
+body > section#future_connection > article > div.form > fieldset > label { background:black; color:white; margin-top:5px;}
+body > section#future_connection > article > div.form > fieldset.m_check {margin-top:5px; background:black;line-height:30px; height:30px;}
+body > section#future_connection > article > div.form > fieldset > input {padding:0px; padding-left:5px; line-height:25px; height:25px; margin:0px;} 
+body > section#future_connection > article > div.form > fieldset > textarea {padding:0px; padding-left:5px; margin:0px;} 
+body > section#future_connection > article > div.form > fieldset > input.m_check { background:black; line-height:28px; height:28px;}
+body > section#future_connection > article > div.form > button {line-height:30px; height:30px; color:white; background:#444; margin-top:10px; border-radius:5px; width:60%; margin-left:20%;}
+body > section#future_connection > article > div.form > button:active {width:61%;}
+body > section#future_connection > article > div.date_filed { margin-top:5px; line-height:30px; height:30px; padding-left:10px; padding-right:10px;} 
+body > section#future_connection > article > div.date_filed > div.date_label_txt {font-size:0.9em; float:left; width:30%; line-height:30px; height:30px;}
+body > section#future_connection > article > div.date_filed > input { float:left; margin-left:40px; margin-top:5px; background:white;  }
+body > section#future_connection > article > div.date_filed > select { float:left; margin-left:40px; margin-top:5px; background:white; }
+
+body > section#congratulations_html > article {background:black;}
+body > section#congratulations_html > article > div.page_desc {margin-top:10px; width:100%; background:#222; text-align:center; line-height:30px; height:30px; font-size:1.0em; font-weight:bold;}
+body > section#congratulations_html > article > div.page_title {width:100%; background:#222; text-align:center; line-height:45px; height:50px; font-size:1.3em; font-weight:bold;}
+body > section#congratulations_html > article > ul > li { background:#333; margin:5px; height:42px; padding-top:5px;}
+body > section#congratulations_html > article > ul > li.actived { border:1px solid #fff; color:green;}
+body > section#congratulations_html > article > ul > li > .m_small { color:#999; font-size:0.7em;}
+body > section#congratulations_html > article > ul > li > div > a{ margin-top:10px; font-size:1em;}
+body > section#congratulations_html > article > div.button_rect {width:90%; margin-left:5%;}
+body > section#congratulations_html > article > div.button_rect > button{font-size:0.8em; line-height:30px; height:30px; color:white; background:#444; margin-top:10px; border-radius:5px; width:80%; margin-left:10%;}
+body > section#congratulations_html > article > div.button_rect > button:active{ width:81%;}
+
+body > section#join_connection > article {background:black;}
+body > section#join_connection > article > div.page_title { width:100%; background:#222; text-align:center; line-height:55px; height:55px; font-size:1.5em; font-weight:bold;}
+body > section#join_connection > article > div.page_title { width:100%; background:#222; text-align:center; line-height:55px; height:55px; font-size:1.5em; font-weight:bold;}
+body > section#join_connection > article >  div.form { width:100%; background:#222;  line-height:25px; height:25px;}
+body > section#join_connection > article >  div.form  > fieldset { width:100%; background:#222; border-bottom:2px solid #222;}
+body > section#join_connection > article >  div.form  > fieldset > input {color:white; line-height:20px; height:20px; background:#222; font-size:0.8em;}
+body > section#join_connection > article > div.e_policy_holder { width:100%; padding-left:5%; background:#222; height:40px; line-height:35px; font-size:1.2em; margin-top:10px;}
+body > section#join_connection > article > div.e_policy_holder > a.arrow_up_icon { float:right; font-weight:bold; margin-right:10px;}
+body > section#join_connection > article > div.e_policy_holder > a.arrow_down_icon { float:right;font-weight:bold; margin-right:10px;}
+body > section#join_connection > article > div.content { background:#333;}
+body > section#join_connection > article > div.content > ul > li { border-bottom:1px solid #000;}
+body > section#join_connection > article > div.content > ul > li > div.detail {width:70%;}
+body > section#join_connection > article > div.content > ul > li > div.form { float:right; padding-top:10px; background:#333;}
+body > section#join_connection > article > div.content > ul > li > div.form > fieldset {line-height:20px; background:#333; border-bottom:2px; solid #333;}
+body > section#join_connection > article > div.content > ul > li > div.form > fieldset > input {background:#333;}
+body > section#join_connection > article > button { color:white; background:#444; margin-top:10px; border-radius:5px; width:60%; margin-left:20%;}
+body > section#join_connection > article > button:active {width:61%;}
+
+body > section#connected_to_hub > article {background:black;}
+body > section#connected_to_hub > article > div.page_title { width:100%; background:#222; text-align:center; line-height:55px; height:55px; font-size:1.3em; font-weight:bold;}
+body > section#connected_to_hub > article > div.c_label {font-size:1.2em; width:100%; background:#222; text-align:left; line-height:35px; height:35px; padding-left:5%;}
+body > section#connected_to_hub > article > div.e_policy_holder { width:100%; padding-left:5%; background:#222; height:40px; line-height:35px; font-size:1.2em; }
+body > section#connected_to_hub > article > div.e_policy_holder > a.arrow_up_icon { float:right; font-weight:bold; margin-right:10px;}
+body > section#connected_to_hub > article > div.e_policy_holder > a.arrow_down_icon { float:right;font-weight:bold; margin-right:10px;}
+body > section#connected_to_hub > article > div.content { background:#333;}
+body > section#connected_to_hub > article > div.content > ul > li { border-bottom:1px solid #000;}
+body > section#connected_to_hub > article > div.content > ul > li > div.detail {width:70%;}
+body > section#connected_to_hub > article > div.content > ul > li > div.form { float:right; padding-top:10px; background:#333;}
+body > section#connected_to_hub > article > div.content > ul > li > div.form > fieldset {background:#333; border-bottom:2px; solid #333;}
+body > section#connected_to_hub > article > div.content > ul > li > div.form > fieldset > input {background:#333;}
+body > section#connected_to_hub > article > button { color:white; background:#444; margin-top:10px; border-radius:5px; width:60%; margin-left:20%;}
+body > section#connected_to_hub > article > button:active {width:61%;}
+body > section#connected_to_hub > article > div.mask_div { position:absolute;top: 0%; left: 0%; width:1600px;height:2000px; margin-top: -800px; margin-left: -500px; z-index: 99;background-color:black; opacity:0.6; display:none;}
+
+body > section#new_note > article {background:black;}
+body > section#new_note > article > div.n_content > ul > li { padding : 5px; min-height:50px; margin-top:3px; background:#333;}
+body > section#new_note > article > div.page_title { width:100%; background:#222; text-align:center; line-height:40px; height:55px; font-size:1.2em; font-weight:bold;}
+body > section#new_note > article > div.form {width:90%; margin-left:5%;}
+body > section#new_note > article > div.form > fieldset {background:#333; color:white; padding:0px;padding-left:5px;}
+body > section#new_note > article > div.form > fieldset > textarea { background:#333; color:white;padding:0px;}
+body > section#new_note > article > div.button_rect {width:90%; margin-left:5%;}
+body > section#new_note > article > div.button_rect > button{font-size:0.8em; line-height:30px; height:30px; color:white; background:#444; margin-top:10px; border-radius:5px; width:43%;}
+body > section#new_note > article > div.button_rect > button:active{ width:44%;}
+
+body > section#previous_connections > article {background:black;}
+body > section#previous_connections > article > div.page_title { width:100%; background:#222; text-align:center; line-height:55px; height:55px; font-size:1.2em; font-weight:bold;}
+body > section#previous_connections > article > div.p_content { background:#333;}
+body > section#previous_connections > article > div.p_content > ul > li { border-bottom:1px solid #000;}
+body > section#previous_connections > article > div.p_content > ul > li > div.detail {width:70%;}
+body > section#previous_connections > article > div.p_content > ul > li > div.form { float:right; padding-top:10px; background:#333;}
+body > section#previous_connections > article > div.p_content > ul > li > div.form > fieldset {background:#333; border-bottom:2px; solid #333;}
+body > section#previous_connections > article > div.p_content > ul > li > div.form > fieldset > input {background:#333;}
+body > section#previous_connections > article > button { color:white; background:#444; margin-top:10px; border-radius:5px; width:60%; margin-left:20%; font-size:0.8em;}
+body > section#previous_connections > article > button:active {width:61%;}
+
+body > section#connection_detail > article {background:black;}
+body > section#connection_detail > article > div.page_title { width:100%; background:#222; text-align:center; line-height:40px; height:55px; font-size:1.2em; font-weight:bold;}
+body > section#connection_detail > article > div.m_content { }
+body > section#connection_detail > article > div.m_content > ul > li { background:#333; margin-top:5px;}
+body > section#connection_detail > article > div.m_content > ul > li > small { color:#999;}
+
+body > section#connection_files > article {background:black;}
+body > section#connection_files > article > div.page_title { width:100%; background:#222; text-align:center; line-height:40px; height:55px; font-size:1.2em; font-weight:bold;}
+body > section#connection_files > article > div.m_content { }
+body > section#connection_files > article > div.m_content > ul > li { background:#333; margin-top:5px;}
+body > section#connection_files > article > div.m_content > ul > li > small { color:#999;}
+
+body > section#participants_for_connection > article {background:black;}
+body > section#participants_for_connection > article > div.page_title { width:100%; background:#222; text-align:center; line-height:55px; height:55px; font-size:1.2em; font-weight:bold;}
+body > section#participants_for_connection > article > div.ph_content { background:#333;}
+body > section#participants_for_connection > article > div.ph_content > ul > li { border-bottom:1px solid #000;}
+body > section#participants_for_connection > article > div.ph_content > ul > li > div.detail {width:70%;}
+body > section#participants_for_connection > article > div.ph_content > ul > li > div.form { float:right; padding-top:10px; background:#333;}
+body > section#participants_for_connection > article > div.ph_content > ul > li > div.form > fieldset {background:#333; border-bottom:2px; solid #333;}
+body > section#participants_for_connection > article > div.ph_content > ul > li > div.form > fieldset > input {background:#333;}
+
+body > section#profile_detail > article {background:black;}
+body > section#profile_detail > article > div.page_title { width:100%; background:#222; text-align:center; line-height:55px; height:55px; font-size:1.2em; font-weight:bold;}
+body > section#profile_detail > article > div.m_content { }
+body > section#profile_detail > article > div.m_content > ul > li { background:#333; margin-top:5px;}
+body > section#profile_detail > article > div.m_content > ul > li > small { color:#999;}
+body > section#profile_detail > article > div.m_content > ul > li.m_profile_list { padding:0px;}
+body > section#profile_detail > article > div.m_content > ul > li.m_profile_list > ul { background:black; margin:0px; padding:0px;}
+body > section#profile_detail > article > div.m_content > ul > li.m_profile_list > ul > li { margin:0px; padding:0px; width:90%; margin-left:5%; padding-left:5%; height:45px; line-height:40px; margin-top:5px; background:#444}
+body > section#profile_detail > article > div.m_content > ul > li.m_profile_list > ul > li.thumb > img {height:30px; width:30px;}
+
+body > section#upcoming_connections > article {background:black;}
+body > section#upcoming_connections > article > div.page_title { width:100%; background:#222; text-align:center; line-height:55px; height:55px; font-size:1.2em; font-weight:bold;}
+body > section#upcoming_connections > article > div.m_content { }
+body > section#upcoming_connections > article > div.m_content > ul > li { background:#333; margin-top:5px;}
+body > section#upcoming_connections > article > div.m_content > ul > li > small { color:#999;}
+body > section#upcoming_connections > article > button { color:white; background:#444; margin-top:10px; border-radius:5px; width:60%; margin-left:20%;}
+body > section#upcoming_connections > article > button:active {width:61%;}
+
+body > section#invitations > article {background:black;}
+body > section#invitations > article > div.page_title { width:100%; background:#222; text-align:center; line-height:55px; height:55px; font-size:1.5em; font-weight:bold;}
+body > section#invitations > article > div.email_address {margin-top:5px; width:100%; background:#222; height:40px; font-size:1em;}
+body > section#invitations > article > div.email_address > button { padding:0px; float:right; font-size:1.2em;color:white; line-height:40px; width:100%; }
+body > section#invitations > article > div.m_content {margin-top:5px; background:#333;}
+body > section#invitations > article > div.m_content > ul > li { border-bottom:1px solid #000;}
+body > section#invitations > article > div.m_content > ul > li > .user_detail_item {padding-top:10px;} 
+body > section#invitations > article > div.m_content > ul > li > .user_detail_item > div.invite_icon { float:right; width:10%;}
+body > section#invitations > article > div.m_content > ul > li > .user_detail_item > div.l_user_name {float:left; width:70%;}
+
+body > section#profile_list > article {background:black;}
+body > section#profile_list > article > div.page_title { width:100%; background:#222; text-align:center; line-height:55px; height:55px; font-size:1.5em; font-weight:bold;}
+body > section#profile_list > article > div.profile_name {margin-top:5px; width:100%; background:#222; height:35px; font-size:0.8em;}
+body > section#profile_list > article > div.profile_name > div.form {width:75%; margin-left:5%; float:left;}
+body > section#profile_list > article > div.profile_name > div.form > fieldset {background:#222; color:white; padding:0px;padding-left:5px;}
+body > section#profile_list > article > div.profile_name > div.form > fieldset > input { background:#222; color:white;padding:0px;}
+body > section#profile_list > article > div.profile_name > div.arrow {  float:right; width:30px;  width:50px !important;}
+body > section#profile_list > article > div.profile_name > div.arrow > a { font-size:2em; margin-right:12px;}
+body > section#profile_list > article > div.e_policy_holder { width:100%; padding-left:5%; background:#222; height:40px; line-height:35px; font-size:1.2em; margin-top:10px;}
+body > section#profile_list > article > div.e_policy_holder > a.arrow_up_icon { float:right; font-weight:bold; margin-right:10px;}
+body > section#profile_list > article > div.e_policy_holder > a.arrow_down_icon { float:right;font-weight:bold; margin-right:10px;}
+body > section#profile_list > article > div.content { background:#333;}
+body > section#profile_list > article > div.content > ul > li { border-bottom:1px solid #000;}
+body > section#profile_list > article > div.content > ul > li > div.detail {width:70%;}
+body > section#profile_list > article > div.content > ul > li > div.form { float:right; padding-top:10px; background:#333;}
+body > section#profile_list > article > div.content > ul > li > div.form > fieldset {background:#333; border-bottom:2px; solid #333;}
+body > section#profile_list > article > div.content > ul > li > div.form > fieldset > input {background:#333;}
+body > section#profile_list > article > button { color:white; background:#444; margin-top:10px; border-radius:5px; width:60%; margin-left:20%; font-size:1em;}
+body > section#profile_list > article > button:active {width:61%;}
+
+body > section#create_profile > article {background:black;}
+body > section#create_profile > article > div.page_title { width:100%; background:#222; text-align:center; line-height:55px; height:55px; font-size:1.5em; font-weight:bold;}
+body > section#create_profile > article > div.form { padding-left:10px; padding-right:10px;}
+body > section#create_profile > article > div.form > fieldset { padding:0px; line-height:30px; height:30px; margin-top:3px; background:#333;}
+body > section#create_profile > article > div.form > fieldset > input {color:white; padding:0px; padding-left:5px; line-height:30px; height:30px; margin:0px;} 
+body > section#create_profile > article > div.form > div.profile_images { height:35px; width:100%; margin-top:5px; margin-bottom:5px;}
+body > section#create_profile > article > div.form > div.profile_images > img { width:50px; height:50px; margin-left:42%; float:left; padding:0px;}
+body > section#create_profile > article > div.form > button {line-height:30px; height:30px; color:white; background:#444; border-radius:5px; width:60%; margin-left:20%;}
+body > section#create_profile > article > div.form > button:active {width:61%;}
+body > section#create_profile > article > div.mask_div { position:absolute;top: 0%; left: 0%; width:1600px;height:2000px; margin-top: -800px; margin-left: -500px; z-index: 99;background-color:black; opacity:0.6; display:none;}
+body > section#create_profile > article > div.take_photo_btn_rect {z-index:9999; position:absolute; bottom:0px; display:none; text-align:center; width:100%;}
+body > section#create_profile > article > div.take_photo_btn_rect > button {background:#333; margin-top:10px; color:#fff; margin-left:-5%;}
+
+body > section#edit_profile > article {background:black;}
+body > section#edit_profile > article > div.page_title { width:100%; background:#222; text-align:center; line-height:55px; height:55px; font-size:1.5em; font-weight:bold;}
+body > section#edit_profile > article > div.form { padding-left:10px; padding-right:10px;}
+body > section#edit_profile > article > div.form > fieldset { padding:0px; line-height:30px; height:30px; margin-top:3px; background:#333;}
+body > section#edit_profile > article > div.form > fieldset > input {color:white; padding:0px; padding-left:5px; line-height:30px; height:30px; margin:0px;} 
+body > section#edit_profile > article > div.form > div.profile_images { height:35px; width:100%; margin-top:5px; margin-bottom:5px;}
+body > section#edit_profile > article > div.form > div.profile_images > img { width:50px; height:50px; margin-left:42%; float:left; padding:0px;}
+body > section#edit_profile > article > div.mask_div1 { position:absolute;top: 0%; left: 0%; width:1600px;height:2000px; margin-top: -800px; margin-left: -500px; z-index: 99;background-color:black; opacity:0.6; display:none;}
+body > section#edit_profile > article > div.take_photo_btn_rect1 {z-index:9999; position:absolute; bottom:0px; display:none; text-align:center; width:100%;}
+body > section#edit_profile > article > div.take_photo_btn_rect1 > button.camera_btn {width:60%; background:#333; margin-top:10px; color:#fff; margin-left:-5%;}
+body > section#edit_profile > article > div.take_photo_btn_rect1 > button.camera_btn:active {width:61%; }
+body > section#edit_profile > article > div.form > button {line-height:30px; height:30px; color:white; background:#444; border-radius:5px; width:40%; margin-left:6%;}
+body > section#edit_profile > article > div.form > button:active {width:41%;}
+
+body > section#participants > article {background:black; }
+body > section#participants > article > div.page_title { width:100%; background:#222; text-align:center; line-height:55px; height:55px; font-size:1.3em; font-weight:bold;}
+body > section#participants > article > div.p_content { background:#333; color:white;}
+body > section#participants > article > div.p_content > ul > li { border-bottom:1px solid #000;}
+body > section#participants > article > div.p_content > ul > li > div.detail {width:70%;}
+body > section#participants > article > div.p_content > ul > li > div.form { float:right; padding-top:10px; background:#333;}
+body > section#participants > article > div.p_content > ul > li > div.form > fieldset {background:#333; border-bottom:2px; solid #333;}
+body > section#participants > article > div.p_content > ul > li > div.form > fieldset > input {background:#333;}

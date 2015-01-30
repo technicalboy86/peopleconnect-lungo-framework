@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="cleartype" content="on">
+		<title>agg</title>
+
+        <link rel="stylesheet" href="package/lungo/lungo.css">
+        <link rel="stylesheet" href="package/lungo/lungo.icon.css">
+	    <link rel="stylesheet" href="static/stylesheets/theme.css">
+       
+        <link rel="stylesheet" href="css/jquery-ui.css">
+	    <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="static/stylesheets/app.css">
+            
+        <!-- Maps from Mapbox -->
+        <link rel="stylesheet" href="static/stylesheets/mapbox.css?v=1">
+                
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/retina-1.1.0.min.js"></script>
+		<script src="js/jquery-1.10.1.min.js"></script>
+		<script src="js/jquery-ui.js"></script>
+
+	    <script type="text/javascript">
+            document.addEventListener("deviceready", onDeviceReady, false);
+        </script>
+  </head>
+  <body>
+	<section id="main" data-transition="fade">
+		<header>
+			<nav class="logo centered">
+				<img src="img/logo.png"/>
+			</nav>
+            <br><br>
+            <div class="banner">
+                <div class="app_name">
+                    People Connect
+                </div>
+            </div>
+		</header>
+		<article class="indented">
+			<br><br><br>
+            <div class="main_btn" data-view-section="future_connection">Host</div>
+            <br>
+            <div class="main_btn" data-view-section="join_connection">Join</div>
+    	</article>
+        <nav id="options-icons" data-control="menu" class="icons">
+        	<a href="#" data-icon="home" id="home_menu">Home</a>
+            <a href="#" data-icon="undo" id="previous_menu">Connections</a>
+            <a href="#" data-icon="globe" id="agenda_menu">Agenda</a>
+            <a href="#" data-icon="edit" id="new_note_menu">New Note</a>            
+            <a href="#" data-icon="comments" id="connects_menu">Participants</a>
+            <a href="#" data-icon="book" id="invitations_menu">Invitations</a>
+            <a href="#" data-icon="remove" id="disconnect_menu">Disconnect</a>
+            <a href="#" data-icon="user" id="edit_profile_menu">Edit Profile</a>
+            <a href="#" data-icon="remove" id="upcoming_menu">Close</a>
+        </nav>
+        <footer>
+           <a href="#" data-icon="grid" class="on-right" data-view-menu="options-icons" id="menu_btn"></a>
+        </footer>
+	</section>
+		<script type="text/javascript" src="js/index.js"></script>
+ 		<script src="components/quojs/quo.debug.js"></script>
+		<script src="package/lungo/lungo.js"></script>
+		<script>
+			Lungo.init({
+				name: 'Etched',
+				version: '0.0.1',
+				resources: [
+                        'static/sections/select_connection.html',
+                        'static/sections/instant_connection.html',
+                        'static/sections/future_connection.html',
+                        'static/sections/congratulations_html.html',
+                        'static/sections/join_connection.html',
+                        'static/sections/connected_to_hub.html',
+                        'static/sections/new_note.html',
+                        'static/sections/previous_connections.html',
+                        'static/sections/connection_detail.html',
+                        'static/sections/connection_files.html',
+                        'static/sections/participants_for_connection.html',
+                        'static/sections/profile_detail.html',
+                        'static/sections/upcoming_connections.html',
+                        'static/sections/invitations.html',
+                        'static/sections/profile_list.html',
+                        'static/sections/create_profile.html',
+                        'static/sections/edit_profile.html',
+                        'static/sections/participants.html',
+				],
+				history: false
+			});
+		</script>
+		<script src="static/javascripts/app.js"></script> 
+        <script src="static/javascripts/app.api.js"></script>
+		<script src="static/javascripts/app.database.js"></script>
+		<script src="static/javascripts/app.db.js"></script>
+        <script src="static/javascripts/app.menu.js"></script>
+        <script src="static/javascripts/app.components.js"></script>
+        <script src="static/javascripts/app.profile.js"></script>
+        <script src="static/javascripts/app.host.js"></script>
+        <script src="static/javascripts/app.note.js"></script>
+		<script type="text/javascript">
+			app.initialize();
+		</script>
+	</body>
+</html>

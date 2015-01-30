@@ -1,0 +1,65 @@
+<section id="profile_list" data-transition="slide">
+    <header>
+        <nav class="logo centered">
+            <img src="img/logo.png"/>
+        </nav>
+        <br><br>
+        <div class="banner">
+            <div class="app_name">
+                People Connect
+            </div>
+        </div>
+    </header>
+    <article class="list scroll">
+        <div class="page_title" data-view-section="">Profiles</div>
+        <div class="profile_name" data-view-section="">
+            <div class="form" >
+                <fieldset class="radius-bottom shadow">
+                    <input type="text" placeholder="Enter New Profile Name to Create." id="e_profile_name_txt" />
+                </fieldset>
+            </div>
+            <div class="arrow" id="enter_profile_name_btn">
+                <a href="#" data-icon="chevron-right" class="on-right" id="enter_profile_name_btn"></a>
+            </div>
+        </div>
+        <div class="e_policy_holder">
+            Select Profile
+            <a class="arrow_up_icon" href="#" data-icon="angle-down" > </a>
+            <a class="arrow_down_icon" href="#" data-icon="angle-up" style="display:none"> </a>
+        </div>
+        <div class="content">
+            <ul id="s_profile_list">
+  <!--              <li class="thumb">
+                    <img src="img/user_profile1.png" />
+                    <div class="detail">
+                        <strong>&lt;strong&gt;</strong>
+                        <small></small>
+                    </div>
+                    <div class="form">
+                        <fieldset>
+                            <input type="checkbox" class="inline right" id="i_1"/>
+                        </fieldset>
+                    </div>
+                </li> -->
+            </ul>
+        </div>
+        <br>
+        <button class="centered" id="s_edit_btn" data-icon="edit" data-label="Edit"></button>
+        <br><br><br>
+    </article>
+    <nav id="pl_options-icons" data-control="menu" class="icons">
+        <a href="#" data-icon="home" id="pl_home_menu">Home</a>
+        <a href="#" data-icon="undo" id="pl_previous_menu">Connections</a>
+        <a href="#" data-icon="globe" id="pl_agenda_menu">Agenda</a>
+        <a href="#" data-icon="edit" id="pl_new_note_menu">New Note</a>
+        <a href="#" data-icon="comments" id="pl_connects_menu">Participants</a>
+        <a href="#" data-icon="book" id="pl_invitations_menu">Invitations</a>
+        <a href="#" data-icon="remove" id="pl_disconnect_menu">Disconnect</a>
+        <a href="#" data-icon="user" id="pl_edit_profile_menu">Edit Profile</a>
+        <a href="#" data-icon="remove" id="pl_upcoming_menu">Close</a>
+    </nav>
+    <footer>
+        <a href="#" data-icon="chevron-left" class="on-left" data-view-section="back"></a>
+        <a href="#" data-icon="grid" class="on-right" data-view-menu="pl_options-icons" id="pl_menu_btn"></a>
+    </footer>
+</section>

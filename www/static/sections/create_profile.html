@@ -1,0 +1,62 @@
+<section id="create_profile" data-transition="slide">
+    <header>
+        <nav class="logo centered">
+            <img src="img/logo.png"/>
+        </nav>
+        <br><br>
+        <div class="banner">
+            <div class="app_name">
+                People Connect
+            </div>
+        </div>
+    </header>
+    <article class="list scroll">
+        <div class="page_title" data-view-section="">Create Profile</div>
+        <br>
+        <div class="form" >
+            <div class="profile_images">
+                <img src="img/user1.png" class="m_profile_image" id="m_profile_image"/>
+            </div>
+            <br>
+            <div style="clear:both;"></div>
+			<fieldset class="radius-bottom shadow">
+				<input type="text" placeholder="Broadcast Name" class="profile_field" id="cp_broadcast_name" />
+			</fieldset>
+			<fieldset class="radius-bottom shadow">
+				<input type="text" placeholder="Full Name" class="profile_field" id="cp_full_name" />
+			</fieldset>
+			<fieldset class="radius-bottom shadow">
+				<input type="text" placeholder="Profile Type" class="profile_field" id="cp_profile_type" />
+			</fieldset>
+			<fieldset class="radius-bottom shadow">
+				<input type="number" placeholder="Phone Number" class="profile_field" id="cp_phone_number" />
+			</fieldset>
+			<fieldset class="radius-bottom shadow">
+				<input type="email" placeholder="Email Address" class="profile_field" id="cp_email_address" />
+			</fieldset>
+            <br>
+            <button class="centered" id="c_create_btn" data-icon="ok" data-label="Create"></button>
+		</div>
+        
+        <div class="take_photo_btn_rect form centered">
+            <button class="centered" id="take_photo_btn" data-icon="" data-label="Take Photo"></button>
+            <button class="centered" id="take_photo_library_btn" data-icon="" data-label="Add form Library"></button>
+        </div>
+        <div class="mask_div"></div>
+    </article>
+    <nav id="cp_options-icons" data-control="menu" class="icons">
+        <a href="#" data-icon="home" id="cp_home_menu">Home</a>
+        <a href="#" data-icon="undo" id="cp_previous_menu">Connections</a>
+        <a href="#" data-icon="globe" id="cp_agenda_menu">Agenda</a>
+        <a href="#" data-icon="edit" id="cp_new_note_menu">New Note</a>
+        <a href="#" data-icon="comments" id="cp_connects_menu">Participants</a>
+        <a href="#" data-icon="book" id="cp_invitations_menu">Invitations</a>
+        <a href="#" data-icon="remove" id="cp_disconnect_menu">Disconnect</a>
+        <a href="#" data-icon="user" id="cp_edit_profile_menu">Edit Profile</a>
+        <a href="#" data-icon="remove" id="cp_upcoming_menu">Close</a>
+    </nav>
+    <footer>
+        <a href="#" data-icon="chevron-left" class="on-left" data-view-section="back"></a>
+        <a href="#" data-icon="grid" class="on-right" data-view-menu="cp_options-icons" id="cp_menu_btn"></a>
+    </footer>
+</section>

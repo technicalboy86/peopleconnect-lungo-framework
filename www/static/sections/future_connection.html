@@ -1,0 +1,100 @@
+<section id="future_connection" data-transition="slide">
+    <header>
+        <nav class="logo centered">
+            <img src="img/logo.png"/>
+        </nav>
+        <br><br>
+        <div class="banner">
+            <div class="app_name">
+                People Connect
+            </div>
+        </div>
+    </header>
+    <article class="list scroll">
+        <div class="page_title" data-view-section="">Setup Meeting Details</div>
+        <div class="date_filed">
+            <div class="date_label_txt">Connection&nbsp;Date</div>
+            <input type="date" id="c_connection_date_text"/>
+            <input type="time" id="c_connection_time_text"/>
+            <div style="clear:both;"></div>
+            <div class="date_label_txt">Duration&nbsp;(hours)</div>
+            <select class="custom" id="c_duration_select">
+	            <option value="1">&nbsp;&nbsp;&nbsp;1</option>
+                <option value="2">&nbsp;&nbsp;&nbsp;2</option>
+                <option value="3">&nbsp;&nbsp;&nbsp;3</option>
+                <option value="4">&nbsp;&nbsp;&nbsp;4</option>
+                <option value="5">&nbsp;&nbsp;&nbsp;5</option>
+                <option value="6">&nbsp;&nbsp;&nbsp;6</option>
+                <option value="7">&nbsp;&nbsp;&nbsp;7</option>
+                <option value="8">&nbsp;&nbsp;&nbsp;8</option>
+                <option value="9">&nbsp;&nbsp;&nbsp;9</option>
+                <option value="10">&nbsp;&nbsp;&nbsp;10</option>
+                <option value="11">&nbsp;&nbsp;&nbsp;11</option>
+                <option value="12">&nbsp;&nbsp;&nbsp;12</option>
+                <option value="13">&nbsp;&nbsp;&nbsp;13</option>
+                <option value="14">&nbsp;&nbsp;&nbsp;14</option>
+                <option value="15">&nbsp;&nbsp;&nbsp;15</option>
+                <option value="16">&nbsp;&nbsp;&nbsp;16</option>
+                <option value="17">&nbsp;&nbsp;&nbsp;17</option>
+                <option value="18">&nbsp;&nbsp;&nbsp;18</option>
+                <option value="19">&nbsp;&nbsp;&nbsp;19</option>
+                <option value="20">&nbsp;&nbsp;&nbsp;20</option>
+                <option value="21">&nbsp;&nbsp;&nbsp;21</option>
+                <option value="22">&nbsp;&nbsp;&nbsp;22</option>
+                <option value="23">&nbsp;&nbsp;&nbsp;23</option>
+                <option value="24">&nbsp;&nbsp;&nbsp;24</option>
+            </select>
+        </div>
+        <div style="clear:both;"></div>
+        
+        <div class="form" >
+            <fieldset class="m_check radius-bottom shadow">
+                <label class="anchor">Check this box to connect now.</label>
+				<input type="checkbox" class="m_check inline right" id="f_connect_now_check"/>
+			</fieldset>
+            <div style="clear:both;"></div>
+			<label>Connection Title</label>
+			<fieldset class="radius-bottom shadow">
+				<input type="text" placeholder="Enter Title data here." class="future_connection_data_field" id="c_connection_title_text" />
+			</fieldset>
+			
+			<label>Connection Location</label>
+			<fieldset class="radius-bottom shadow">
+				<input type="text" placeholder="Enter Location data here." class="future_connection_data_field" id="c_connection_location_text" />
+			</fieldset>
+		</div>
+		
+		<div class="form" >
+			
+			<label>Host's Name</label>
+			<fieldset class="radius-bottom shadow">
+				<input type="text" placeholder="Enter Host's name here." class="future_connection_data_field" id="c_host_name_text" />
+			</fieldset>
+            <label>Pass Code</label>
+			<fieldset class="radius-bottom shadow">
+				<input type="number" placeholder="Enter pass code here." class="future_connection_data_field" id="c_passcode_text" />
+			</fieldset>
+            <label>Agenda</label>
+			<fieldset class="m_textarea radius-bottom shadow">
+				<textarea placeholder="Enter agenda here." id="c_agenda_text" rows="3"></textarea>
+			</fieldset>
+            <br>
+            <button class="centered" id="f_create_host_btn" data-icon="ok" data-label="Host"></button>
+		</div>
+    </article>
+    <nav id="f_options-icons" data-control="menu" class="icons">
+        <a href="#" data-icon="home" id="f_home_menu">Home</a>
+        <a href="#" data-icon="undo" id="f_previous_menu">Connections</a>
+        <a href="#" data-icon="globe" id="f_agenda_menu">Agenda</a>
+        <a href="#" data-icon="edit" id="f_new_note_menu">New Note</a>
+        <a href="#" data-icon="comments" id="f_connects_menu">Participants</a>
+        <a href="#" data-icon="book" id="f_invitations_menu">Invitations</a>
+        <a href="#" data-icon="remove" id="f_disconnect_menu">Disconnect</a>
+        <a href="#" data-icon="user" id="f_edit_profile_menu">Edit Profile</a>
+        <a href="#" data-icon="remove" id="f_upcoming_menu">Close</a>
+    </nav>
+    <footer>
+        <a href="#" data-icon="chevron-left" class="on-left" data-view-section="back"></a>
+        <a href="#" data-icon="grid" class="on-right" data-view-menu="f_options-icons" id="f_menu_btn"></a>
+    </footer>
+</section>

@@ -1,0 +1,63 @@
+<section id="edit_profile" data-transition="slide">
+    <header>
+        <nav class="logo centered">
+            <img src="img/logo.png"/>
+        </nav>
+        <br><br>
+        <div class="banner">
+            <div class="app_name">
+                People Connect
+            </div>
+        </div>
+    </header>
+    <article class="list scroll">
+        <div class="page_title" data-view-section="">Edit Profile</div>
+        <br>
+        <div class="form" >
+            <div class="profile_images">
+                <img src="img/user1.png" class="edit_profile_image" id="edit_profile_image"/>
+            </div>
+            <br>
+			<fieldset class="radius-bottom shadow">
+				<input type="text" placeholder="Broadcast Name" class="profile_field" id="ep_broadcast_name"/>
+			</fieldset>
+			<fieldset class="radius-bottom shadow">
+				<input type="text" placeholder="Full Name" class="profile_field" id="ep_full_name"/>
+			</fieldset>
+			<fieldset class="radius-bottom shadow">
+				<input type="text" placeholder="Profile Type" class="profile_field" id="ep_profile_type"/>
+			</fieldset>
+			<fieldset class="radius-bottom shadow">
+				<input type="number" placeholder="Phone Number" class="profile_field" id="ep_phone_number"/>
+			</fieldset>
+			<fieldset class="radius-bottom shadow">
+				<input type="email" placeholder="Email Address" class="profile_field" id="ep_email_address"/>
+			</fieldset>
+            <br>
+            <button class="on-left" id="e_update_btn" data-label="Update"></button>
+            <button class="on-right" id="e_delete_btn" data-label="Delete"></button>
+            <br>
+            
+		</div>
+        <div class="take_photo_btn_rect1 form centered">
+            <button class="centered camera_btn" id="take_photo_btn1" data-icon="" data-label="Take Photo"></button>
+            <button class="centered camera_btn" id="take_photo_library_btn1" data-icon="" data-label="Add from camera roll"></button>
+        </div>
+        <div class="mask_div1"></div>
+    </article>
+    <nav id="ep_options-icons" data-control="menu" class="icons">
+        <a href="#" data-icon="home" id="ep_home_menu">Home</a>
+        <a href="#" data-icon="undo" id="ep_previous_menu">Connections</a>
+        <a href="#" data-icon="globe" id="ep_agenda_menu">Agenda</a>
+        <a href="#" data-icon="edit" id="ep_new_note_menu">New Note</a>
+        <a href="#" data-icon="comments" id="ep_connects_menu">Participants</a>
+        <a href="#" data-icon="book" id="ep_invitations_menu">Invitations</a>
+        <a href="#" data-icon="remove" id="ep_disconnect_menu">Disconnect</a>
+        <a href="#" data-icon="user" id="ep_edit_profile_menu">Edit Profile</a>
+        <a href="#" data-icon="remove" id="ep_upcoming_menu">Close</a>
+    </nav>
+    <footer>
+        <a href="#" data-icon="chevron-left" class="on-left" data-view-section="back"></a>
+        <a href="#" data-icon="grid" class="on-right" data-view-menu="ep_options-icons" id="ep_menu_btn"></a>
+    </footer>
+</section>
