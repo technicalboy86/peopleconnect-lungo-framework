@@ -21,6 +21,7 @@ App.note = function() {
 				var mNote = data.notes[index];
 
 				var html = '<li>';
+                html += '<div class="on-right">'+mNote.profilename+'&nbsp;&nbsp;&nbsp;</div>';
 				html += '<strong>'+mNote.note+'</strong>';
 				html += '<small>'+mNote.create_date+'</small>';
 				html += '</li>';

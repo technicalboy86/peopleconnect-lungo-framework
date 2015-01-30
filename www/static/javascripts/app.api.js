@@ -11,7 +11,7 @@ App.api = function() {
 
 	return {
 		download_agenda_data:function(hostId){
-            console.log("Running download_agenda_data");
+			console.log("Running download_agenda_data");
 			
 			navigator.notification.confirm("Are you going to open/save this file?", 
 				function(buttonIndex){
@@ -28,7 +28,7 @@ App.api = function() {
 				["Open", "Save", "Cancel"]);			
 		},
 		download_participants_data:function(hostId){
-            console.log("Running download_participants_data");
+			console.log("Running download_participants_data");
 			
 			navigator.notification.confirm("Are you going to open/save this file?", 
 				function(buttonIndex){
@@ -45,7 +45,7 @@ App.api = function() {
 				["Open", "Save", "Cancel"]);			
 		},
 		download_notes_data:function(hostId){
-            console.log("Running download_notes_data");
+			console.log("Running download_notes_data");
 			
 			navigator.notification.confirm("Are you going to open/save this file?", 
 				function(buttonIndex){
@@ -62,31 +62,31 @@ App.api = function() {
 				["Open", "Save", "Cancel"]);			
 		},
 		disconnectConnection:function(){
-            console.log("Running disconnectConnection");
-            var param = {user_id:App.user_id, host_id:App.host_id};
+			console.log("Running disconnectConnection");
+			var param = {user_id:App.user_id, host_id:App.host_id};
 			console.log(param);
 			$.post(config.url + "disconnect", param, function(data) {
-                console.log(data);
+				console.log(data);
 			}, "json");
 		},
 		shareResponse:function(param){
-            console.log("Running shareResponse");
+			console.log("Running shareResponse");
 			console.log(param);
 			$.post(config.url + "sharerespond", param, function(data) {
-                console.log(data);
+				console.log(data);
 			}, "json");
 		},
 		sendShareRequest:function(param){
-            console.log("Running sendShareRequest");
+			console.log("Running sendShareRequest");
 			console.log(param);
 			$.post(config.url + "sendsharerequest", param, function(data) {
-                console.log(data);
+				console.log(data);
 			}, "json");
 		},
 		getShareRequest:function(){
-			console.log("Running getShareRequest");
+			//console.log("Running getShareRequest");
 			var param = {userid:App.user_id};
-			console.log(param);
+			//console.log(param);
 			$.post(config.url + "getsharerequest", param, function(data) {
 				//console.log(data);
 				App.profile().addContactRequest(data);
@@ -97,6 +97,14 @@ App.api = function() {
 
 			$.post(config.url + "previousconnect", {user_id:userID}, function(data) {
 				App.host().handlePreviousConnections(data);
+			}, "json");
+		},
+		getFurtherConnections:function(now){
+			console.log("Running getFurtherConnections");
+
+			$.post(config.url + "gethost", {now:now, userid:App.user_id}, function(data) {
+				//console.log(data);
+				App.host().handleFurtherConnections(data);
 			}, "json");
 		},
 		addNote:function(hostID,userId,profileId, mNote){
@@ -129,36 +137,36 @@ App.api = function() {
 			console.log("Running join_connection");
 			Lungo.Notification.show();
 			console.log(param);
-            $.post(config.url + "connect", param, function(data) {
+			$.post(config.url + "connect", param, function(data) {
  				console.log(data);
  								
  				if(data.result == "success"){
                 
-                App.my_profile.details.id = param.profile_id;
- 				if(data.host != null && data.host != undefined)
- 				{
- 					if(data.host.id != null && data.host.id != undefined)
- 					{
- 						Lungo.Notification.hide();	
- 						Lungo.Router.section("connected_to_hub");
- 						menu_connected();
- 						
- 						$("#note_connection_id_text").html("Connected to Hub : " + data.host.id);
- 						
- 						$("#ch_connection_id_text").html("Connected to Hub : " + data.host.id);
- 						$("#ch_host_name_text").html("Hosted by : " + data.host.hostname);
- 						$("#ch_connection_location_text").html("Location : " + data.host.location);
-                        App.agenda = data.host.agenda;
- 						App.api().getParticipants(data.host.id);
- 						App.host_id = data.host.id;
- 						App.storedPasscode = data.host.password;
- 					}else{
- 						Lungo.Notification.error("join failed.", "", "warning-sign", 2);
- 					}
- 				}else{
- 					Lungo.Notification.error("join failed.", "", "warning-sign", 2);
- 				}
- 				
+					App.my_profile.details.id = param.profile_id;
+					if(data.host != null && data.host != undefined)
+					{
+						if(data.host.id != null && data.host.id != undefined)
+						{
+							Lungo.Notification.hide();	
+							Lungo.Router.section("connected_to_hub");
+							menu_connected();
+							
+							$("#note_connection_id_text").html("Connected to Hub : " + data.host.id);
+							
+							$("#ch_connection_id_text").html("Connected to Hub : " + data.host.id);
+							$("#ch_host_name_text").html("Hosted by : " + data.host.hostname);
+							$("#ch_connection_location_text").html("Location : " + data.host.location);
+							App.agenda = data.host.agenda;
+							App.api().getParticipants(data.host.id);
+							App.host_id = data.host.id;
+							App.storedPasscode = data.host.password;
+						}else{
+							Lungo.Notification.error("join failed.", "", "warning-sign", 2);
+						}
+					}else{
+						Lungo.Notification.error("join failed.", "", "warning-sign", 2);
+					}
+					
  				}
  				if(data.result == "before"){	
  					Lungo.Notification.error("Host is not opended.", "", "warning-sign", 2);
@@ -178,7 +186,7 @@ App.api = function() {
 		setHostOption:function(param){
 			console.log("Running setHostOptionfunction");
 			Lungo.Notification.show();
-            $.post(config.url + "hostoption", param, function(data) {
+			$.post(config.url + "hostoption", param, function(data) {
  				console.log(data);
  				Lungo.Notification.hide();
  				Lungo.Router.section("main");
@@ -188,23 +196,25 @@ App.api = function() {
 			console.log("Running createHost");
 			Lungo.Notification.show();
 			console.log(param);
-            $.post(config.url + "createhost", param, function(data) {
+			$.post(config.url + "createhost", param, function(data) {
  				console.log(data);
  				Lungo.Notification.hide();
  				if(data.hostid != undefined && data.hostid != null)
  				{
  					App.host_id = data.hostid;
+					var image = document.getElementById('host_barcode_img');
+					image.src = "http://myrichtree.com/wkang/peopleconnect/public/barcode/image.php?id=" + App.host_id;
  					$("#created_host_id_text").html("Your Host ID Number is : "+ App.host_id);
  					Lungo.Router.section("congratulations_html");
-                    menu_connected();
+					menu_connected();
  				}
 			}, "json");
 		},
 		registerDeviceID:function (uuid){
 			console.log("Running registerDeviceID");
 			
-            $.post(config.url + "register", {deviceid:uuid}, function(data) {
-                   console.log(data);
+			$.post(config.url + "register", {deviceid:uuid}, function(data) {
+				console.log(data);
  				if(data.user_id == undefined || data.user_id == null || data.user_id == -1)
  				{
  					Lungo.Notification.error("Device Id register failed. please try again.", "", "error", 3);
@@ -220,7 +230,7 @@ App.api = function() {
 		deleteProfile:function (){
 			console.log("Running deleteProfile");
 			Lungo.Notification.show();
-            $.post(config.url + "removeprofile", {profileid:App.my_profile.details.id}, function(data) {
+			$.post(config.url + "removeprofile", {profileid:App.my_profile.details.id}, function(data) {
  					console.log(data);
 					if(data.result == "success")
 					{
@@ -241,52 +251,50 @@ App.api = function() {
 		getProfiles:function (ref){
 			console.log("Running getProfiles");
 			
-            $.post(config.url + "getprofile", {user_id:App.user_id}, function(data) {
-                   console.log(data);
+			$.post(config.url + "getprofile", {user_id:App.user_id}, function(data) {
+				console.log(data);
  				ref.handleProfiles(data);
+
 			}, "json");
 		},
 		addProfile:function (ref){
 			console.log("Running addProfile");
 			Lungo.Notification.show();
-            if (ref.profileValidate() === true) {
+			if (ref.profileValidate() === true) {
 				console.log(ref.details);
 				
-				
 				var imageURI = ref.details.icon;
-
 				if(ref.details.icon.substring(0,4)=="file"){
 				
 					var options = new FileUploadOptions();
-    				options.fileKey="icon";
-    				options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-    				options.mimeType="image/jpeg";
-
-    				var params = {};
+					options.fileKey="icon";
+					options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+					options.mimeType="image/jpeg";
+	
+					var params = {};
 					params.user_id = ref.details.user_id;
-    				params.email = ref.details.email;
-    				params.profilename = ref.details.profilename;
+					params.email = ref.details.email;
+					params.profilename = ref.details.profilename;
 					params.fullname = ref.details.fullname;
 					params.broadcastname = ref.details.broadcastname;
 					params.type = ref.details.type;
 					params.phone = ref.details.phone;
 					
-    				options.params = params;
+					options.params = params;
 	
-    				var ft = new FileTransfer();
-    				ft.onprogress = function(progressEvent) {
-    					if (progressEvent.lengthComputable) {
-    						var value = parseInt((progressEvent.loaded / progressEvent.total)* 100 );
-      						console.log(value);
-    					} else {
-
-    					}
+					var ft = new FileTransfer();
+					ft.onprogress = function(progressEvent) {
+						if (progressEvent.lengthComputable) {
+							var value = parseInt((progressEvent.loaded / progressEvent.total)* 100 );
+							console.log(value);
+						} else {
+	
+						}
 					};
 					
 		   			ft.upload(imageURI, encodeURI(config.url + "addprofile"), function(r){ 
 			   			
-//		   				var mParam = JSON.parse(r.response); 
-						var mParam = eval('(' +  r.response + ')');
+		   				var mParam = JSON.parse(r.response); 
 		   				if(mParam.result == "success")
 						{
 							Lungo.Notification.show(
@@ -295,7 +303,7 @@ App.api = function() {
 								3,                      //Seconds
 								function() {
 									Lungo.Notification.hide();
-									Lungo.Router.section("profile_list");
+									Lungo.Router.section("main");
 								}
 							);
 						}else{
@@ -314,7 +322,7 @@ App.api = function() {
 								3,                      //Seconds
 								function() {
 									Lungo.Notification.hide();
-									Lungo.Router.section("profile_list");
+									Lungo.Router.section("main");
 								}
 							);
 						}else{
@@ -331,41 +339,41 @@ App.api = function() {
 		updateProfile:function (ref){
 			console.log("Running updateProfile");
 			Lungo.Notification.show();
-            if (ref.updateProfileValidate() === true) {
+			if (ref.updateProfileValidate() === true) {
+				console.log(ref.details);
 				
 				var imageURI = ref.details.icon;
 				if(ref.details.icon.substring(0,4)=="file"){
 				
 					var options = new FileUploadOptions();
-    				options.fileKey="icon";
-    				options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-    				options.mimeType="image/jpeg";
-
-    				var params = {};
+					options.fileKey="icon";
+					options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+					options.mimeType="image/jpeg";
+	
+					var params = {};
 					params.id = ref.details.id;
-    				params.email = ref.details.email;
+					params.email = ref.details.email;
 					params.fullname = ref.details.fullname;
 					params.broadcastname = ref.details.broadcastname;
 					params.type = ref.details.type;
 					params.phone = ref.details.phone;
 					
-    				options.params = params;
+					options.params = params;
 	
-    				var ft = new FileTransfer();
-    				ft.onprogress = function(progressEvent) {
-    					if (progressEvent.lengthComputable) {
-    						var value = parseInt((progressEvent.loaded / progressEvent.total)* 100 );
-      						console.log(value);
-    					} else {
-
-    					}
+					var ft = new FileTransfer();
+					ft.onprogress = function(progressEvent) {
+						if (progressEvent.lengthComputable) {
+							var value = parseInt((progressEvent.loaded / progressEvent.total)* 100 );
+							console.log(value);
+						} else {
+	
+						}
 					};
 					
 		   			ft.upload(imageURI, encodeURI(config.url + "updateprofile"), function(r){ 
 			   			
 		   				console.log(r.response);
-						var mParam = eval('(' +  r.response + ')');
-//		   				var mParam = JSON.parse(r.response); 
+		   				var mParam = JSON.parse(r.response); 
 		   				if(mParam.result == "success")
 						{
 							Lungo.Notification.show(
@@ -374,7 +382,7 @@ App.api = function() {
 								3,                      //Seconds
 								function() {
 									Lungo.Notification.hide();
-									Lungo.Router.section("profile_list");
+									Lungo.Router.section("main");
 								}
 							);
 						}else{
@@ -385,6 +393,7 @@ App.api = function() {
 					
 					$.post(config.url + "updateprofile", ref.details, function(data) {
 						console.log(data);
+
 						if(data.result == "success")
 						{
 							Lungo.Notification.show(
@@ -393,7 +402,7 @@ App.api = function() {
 								3,                      //Seconds
 								function() {
 									Lungo.Notification.hide();
-									Lungo.Router.section("profile_list");
+									Lungo.Router.section("main");
 								}
 							);
 						}else{

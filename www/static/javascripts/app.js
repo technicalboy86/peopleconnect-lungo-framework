@@ -9,26 +9,32 @@ Lungo.ready(function() {
 	App.host_id = "";
 	App.agenda = "";
 	App.myProfileList = new Array();
-    App.Participants = new Array();
-    App.selectedParticipants = new Array();
+	App.Participants = new Array();
+	App.selectedParticipants = new Array();
 	menu_disconnected();
-    App.my_profile = new App.profile();
+	App.my_profile = new App.profile();
             
-    App.storedPasscode = "";
-    App.profileImageData = "";
-    App.getShareRequestTimer = setInterval(function(){
+	App.storedPasscode = "";
+	App.profileImageData = "";
+	App.getShareRequestTimer = setInterval(function(){
 		App.api().getShareRequest();
 	}, 30000);
 	App.getParticipantTimer = "";
+	
+	App.database.open();
+	App.database.getProfiles();
+	$("#join_barcode_img").hide();
+	
+	App.selectedProfileName = "";
 });
 
 Lungo.Events.init({
 	'load section#invitations': function(event) {
 		var options      = new ContactFindOptions();
-        options.filter   = "";
-        options.multiple = true;
-        var fields       = ["displayName", "name", "photos", "emails"];
-        navigator.contacts.find(fields, onContactSuccess, onContactError, options);
+		options.filter   = "";
+		options.multiple = true;
+		var fields       = ["displayName", "name", "photos", "emails"];
+		navigator.contacts.find(fields, onContactSuccess, onContactError, options);
 
 	},
 	'unload section#participants': function(event) {
@@ -42,10 +48,12 @@ Lungo.Events.init({
 	'load section#previous_connections': function(event) {
 		App.host().getPreviousConnections();
 	},
-    'load section#connection_files': function(event) {
-                  
-         $("#connection_files_host_id_label").html("Files for Connection: "+App.host_id);
-    },
+	'load section#host_list': function(event) {
+		App.host().getFurtherConnections();
+	},
+	'load section#connection_files': function(event) {
+		$("#connection_files_host_id_label").html("Files for Connection: "+App.host_id);
+	},
 	'load section#previous_connections': function(event) {
 		App.host().getPreviousConnections();
 	},
@@ -53,8 +61,19 @@ Lungo.Events.init({
 		App.api().getParticipants(App.host_id);
 	},
 	'load section#join_connection': function(event) {
+		setTimeout(function(){Lungo.Notification.success("Rotate Screen to Scan Host Barcode.","","",4);}, 1000);
 		App.profile().getProfiles();
 		App.my_profile.details.id = null;
+		screen.unlockOrientation();
+		QRtimer= setInterval(onQRscan, 1000);
+	},
+	'unload section#join_connection': function(event) {
+		$("#j_options-icons").removeClass("show");
+		App.IsMenuShown_j = false;
+		screen.lockOrientation('portrait');
+		clearInterval(QRtimer);
+		$("#join_barcode_img").hide();
+		$("#join_connection_id_text").val('');
 	},
 	'load section#new_note': function(event) {
 		Lungo.dom("#m_note_text").val('');
@@ -68,17 +87,13 @@ Lungo.Events.init({
 		App.profile().getProfiles();
 		App.my_profile.details.id = null;
 	},
-    'unload section#select_connection': function(event) {
+	'unload section#select_connection': function(event) {
 		$("#s_options-icons").removeClass("show");
 		App.IsMenuShown_s = false;
 	},  
 	'unload section#main': function(event) {
 		$("#options-icons").removeClass("show");
 		App.IsMenuShown = false;
-	},
-	'unload section#join_connection': function(event) {
-		$("#j_options-icons").removeClass("show");
-		App.IsMenuShown_j = false;
 	},
 	'unload section#connection_files': function(event) {
 		$("#fc_options-icons").removeClass("show");
@@ -108,15 +123,18 @@ Lungo.Events.init({
 		$("#ep_options-icons").removeClass("show");
 		App.IsMenuShown_ep = false;
 	},
+	'load section#future_connection': function(event) {
+		$("#c_host_name_text").val(App.selectedProfileName);
+	},
 	'unload section#future_connection': function(event) {
 		$("#f_options-icons").removeClass("show");
 		App.IsMenuShown_f = false;
 		
 		Lungo.dom("#c_connection_title_text").val('');
 		Lungo.dom("#c_connection_location_text").val('');
-        Lungo.dom("#c_host_name_text").val('');
-        Lungo.dom("#c_passcode_text").val('');
-        Lungo.dom("#c_agenda_text").val('');
+		Lungo.dom("#c_host_name_text").val('');
+		Lungo.dom("#c_passcode_text").val('');
+		Lungo.dom("#c_agenda_text").val('');
 	},
 	'unload section#create_profile': function(event) {
 		$("#cp_options-icons").removeClass("show");
@@ -124,14 +142,14 @@ Lungo.Events.init({
 		
 		$('.profile_images').children('img').each(function () {
         		$(this).removeClass("actived");
-        });
-        
-        App.my_profile.details.icon = null;
-        Lungo.dom("#cp_broadcast_name").val('');
-		Lungo.dom("#cp_full_name").val('');
-        Lungo.dom("#cp_profile_type").val('');
-        Lungo.dom("#cp_phone_number").val('');
-        Lungo.dom("#cp_email_address").val('');
+		});
+		
+		App.my_profile.details.icon = null;
+		Lungo.dom("#cp_broadcast_name").val('');
+			Lungo.dom("#cp_full_name").val('');
+		Lungo.dom("#cp_profile_type").val('');
+		Lungo.dom("#cp_phone_number").val('');
+		Lungo.dom("#cp_email_address").val('');
 	},  
 	'tap #agenda_download_btn': function(event) {
 		App.api().download_agenda_data(App.host_id);
@@ -163,28 +181,28 @@ Lungo.Events.init({
 	},
 	'tap #take_photo_btn': function(event) {
 		event.preventDefault();
-        navigator.camera.getPicture( onCameraSuccess, onCameraFail, { quality:50,destinationType:Camera.DestinationType.DATA_URL,targetWidth: 300,  targetHeight: 300, saveToPhotoAlbum: true ,encodingType: Camera.EncodingType.JPEG} );
+		navigator.camera.getPicture( onCameraSuccess, onCameraFail, { quality:50,destinationType:Camera.DestinationType.DATA_URL,targetWidth: 300,  targetHeight: 300, saveToPhotoAlbum: true ,encodingType: Camera.EncodingType.JPEG} );
    		$(".take_photo_btn_rect").fadeOut(100).animate({bottom:'0px'});
 		$(".mask_div").fadeOut(1500);
 	},
 	'tap #take_photo_library_btn': function(event) {
-	    event.preventDefault();
-        navigator.camera.getPicture(onPhotoURISuccess, onCameraFail, { quality: 50,   destinationType: Camera.DestinationType.FILE_URI, targetWidth: 300,  targetHeight: 300, sourceType:  Camera.PictureSourceType.PHOTOLIBRARY });
+		event.preventDefault();
+		navigator.camera.getPicture(onPhotoURISuccess, onCameraFail, { quality: 50,   destinationType: Camera.DestinationType.FILE_URI, targetWidth: 300,  targetHeight: 300, sourceType:  Camera.PictureSourceType.PHOTOLIBRARY });
    		$(".take_photo_btn_rect").fadeOut(100).animate({bottom:'0px'});   
 		$(".mask_div").fadeOut(1500);  
-    },
-    'tap #take_photo_btn1': function(event) {
+	},
+	'tap #take_photo_btn1': function(event) {
 		event.preventDefault();
-        navigator.camera.getPicture( onCameraSuccess1, onCameraFail, { quality:50,destinationType:Camera.DestinationType.DATA_URL,targetWidth: 300,  targetHeight: 300, saveToPhotoAlbum: true ,encodingType: Camera.EncodingType.JPEG} );
+		navigator.camera.getPicture( onCameraSuccess1, onCameraFail, { quality:50,destinationType:Camera.DestinationType.DATA_URL,targetWidth: 300,  targetHeight: 300, saveToPhotoAlbum: true ,encodingType: Camera.EncodingType.JPEG} );
    		$(".take_photo_btn_rect1").fadeOut(100).animate({bottom:'0px'});
 		$(".mask_div1").fadeOut(1500);
 	},
 	'tap #take_photo_library_btn1': function(event) {
-	    event.preventDefault();
-        navigator.camera.getPicture(onPhotoURISuccess1, onCameraFail, { quality: 50,   destinationType: Camera.DestinationType.FILE_URI, targetWidth: 300,  targetHeight: 300, sourceType:  Camera.PictureSourceType.PHOTOLIBRARY });
+		event.preventDefault();
+		navigator.camera.getPicture(onPhotoURISuccess1, onCameraFail, { quality: 50,   destinationType: Camera.DestinationType.FILE_URI, targetWidth: 300,  targetHeight: 300, sourceType:  Camera.PictureSourceType.PHOTOLIBRARY });
    		$(".take_photo_btn_rect1").fadeOut(100).animate({bottom:'0px'});   
 		$(".mask_div1").fadeOut(1500);  
-    },
+	},
 	'tap #new_invite_email_btn': function(event) {
 		navigator.notification.prompt(
         		'Please enter email address.',  // message
@@ -202,8 +220,8 @@ Lungo.Events.init({
 	},
 	'tap .m_profile_image': function(event) {
 		if ($('.take_photo_btn_rect').css('display') == 'none') {
-    		$(".take_photo_btn_rect").show().animate({bottom:'80px'});
-    		$(".mask_div").show();
+			$(".take_photo_btn_rect").show().animate({bottom:'80px'});
+			$(".mask_div").show();
 		}else{
 			$(".take_photo_btn_rect").fadeOut().animate({bottom:'0px'});
 			$(".mask_div1").fadeOut(1500);
@@ -229,6 +247,7 @@ Lungo.Events.init({
 			return;
 		}
 		var mProfile = App.myProfileList[App.my_profile.details.id];
+		App.selectedProfileName =mProfile.profilename;
 		App.my_profile.details.id = mProfile.id;
 		App.my_profile.details.icon = mProfile.icon;
 		document.getElementById('edit_profile_image').src = mProfile.icon;
@@ -245,9 +264,9 @@ Lungo.Events.init({
   */      	
 		Lungo.dom("#ep_broadcast_name").val(mProfile.broadcastname);
 		Lungo.dom("#ep_full_name").val(mProfile.fullname);
-        Lungo.dom("#ep_profile_type").val(mProfile.type);
-        Lungo.dom("#ep_phone_number").val(mProfile.phone);
-        Lungo.dom("#ep_email_address").val(mProfile.email);
+		Lungo.dom("#ep_profile_type").val(mProfile.type);
+		Lungo.dom("#ep_phone_number").val(mProfile.phone);
+		Lungo.dom("#ep_email_address").val(mProfile.email);
         
 		Lungo.Router.section("edit_profile");
 	},
@@ -305,10 +324,10 @@ Lungo.Events.init({
 		$(document.activeElement).blur(); 
 		App.my_profile.updateProfile();
 	},
-    'tap #o_auto_generate_email': function(event) {
-         $(document.activeElement).blur();
-         Lungo.Router.section("invitations");
-    },
+	'tap #o_auto_generate_email': function(event) {
+	     $(document.activeElement).blur();
+	     Lungo.Router.section("invitations");
+	},
 	'tap #enter_profile_name_btn': function(event) { 
 		$(document.activeElement).blur();
 		var profileName = $("#e_profile_name_txt").val();
@@ -342,13 +361,13 @@ Lungo.Events.init({
 	        App.my_profile.details.id = selectedIndex;
 
         	console.log("--------");
-			console.log(App.myProfileList[selectedIndex]);
-			console.log("--@@@@@@---");
+		console.log(App.myProfileList[selectedIndex]);
+		console.log("--@@@@@@---");
         	console.log(App.selectedParticipants);
-			console.log("--------");
+		console.log("--------");
         	
         	var selectedName = "\"";
-            var selectedParticipantIds = new Array();
+		var selectedParticipantIds = new Array();
         	for(var index in App.selectedParticipants)
 	        {
 	        	if(index != 0 )

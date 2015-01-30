@@ -1,14 +1,8 @@
 <section id="edit_profile" data-transition="slide">
     <header>
         <nav class="logo centered">
-            <img src="img/logo.png"/>
+            <img src="img/SociateLogo.png"/>
         </nav>
-        <br><br>
-        <div class="banner">
-            <div class="app_name">
-                People Connect
-            </div>
-        </div>
     </header>
     <article class="list scroll">
         <div class="page_title" data-view-section="">Edit Profile</div>
@@ -19,16 +13,21 @@
             </div>
             <br>
 			<fieldset class="radius-bottom shadow">
-				<input type="text" placeholder="Broadcast Name" class="profile_field" id="ep_broadcast_name"/>
+				<input type="text" placeholder="Display Name" class="profile_field" id="ep_broadcast_name"/>
 			</fieldset>
 			<fieldset class="radius-bottom shadow">
 				<input type="text" placeholder="Full Name" class="profile_field" id="ep_full_name"/>
 			</fieldset>
 			<fieldset class="radius-bottom shadow">
-				<input type="text" placeholder="Profile Type" class="profile_field" id="ep_profile_type"/>
+				<!--<input type="text" placeholder="Profile Type" class="profile_field" id="ep_profile_type"/>-->
+                <select style="background:transparent; color:#eee;" class="profile_field" id="ep_profile_type">
+                    <option value="Personal">Personal</option>
+                    <option value="Business">Business</option>
+                    <option value="Casual">Casual</option>
+                </select>
 			</fieldset>
 			<fieldset class="radius-bottom shadow">
-				<input type="number" placeholder="Phone Number" class="profile_field" id="ep_phone_number"/>
+				<input type="tel" placeholder="Phone Number" class="profile_field" id="ep_phone_number"/>
 			</fieldset>
 			<fieldset class="radius-bottom shadow">
 				<input type="email" placeholder="Email Address" class="profile_field" id="ep_email_address"/>

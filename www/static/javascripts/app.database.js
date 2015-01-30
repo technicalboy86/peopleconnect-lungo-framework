@@ -16,13 +16,16 @@ App.database = {
 		console.log("Trying to create table.");
 
 		var user_definition = "" + 
-			"CREATE TABLE IF NOT EXISTS `user`(" + 
+			"CREATE TABLE IF NOT EXISTS `profile`(" + 
 				"`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + 
-				"`user_id` INTEGER NOT NULL DEFAULT 0 , " +
-				"`user_name` TEXT NOT NULL, " +
-				"`email` TEXT NOT NULL, " + 
-				"`password` TEXT NOT NULL, " + 
-				"`current_user` INTEGER NOT NULL DEFAULT 0 " + 
+				"`profile_id` INTEGER UNIQUE NULL , " +
+				"`icon` TEXT NOT NULL, " +
+				"`profile_name` TEXT NOT NULL, " +
+				"`display_name` TEXT NOT NULL, " +
+				"`full_name` TEXT NOT NULL, " + 
+				"`profile_type` TEXT NOT NULL, " +
+				"`phone_number` TEXT NOT NULL, " + 
+				"`email_address` TEXT NOT NULL " + 
 			");";
 
 		this.db.transaction(
@@ -31,18 +34,10 @@ App.database = {
 			}
 		);
 	},
-	update_password : function (userId, userpassword){
-		var query = "UPDATE `user` SET 'password'='" + userpassword + "' WHERE `user_id`="+userId;
-		//console.log(query);
-		this.db.transaction(
-			function(transaction) {
-				transaction.executeSql(query, [], App.database.nullDataHandler, App.database.errorHandler);
-			}
-		);
-	},
-	update_account : function (userId, username, useremail){
-		var query = "UPDATE `user` SET 'email'='" + useremail + "', `user_name`='" + username + "' WHERE `user_id`="+userId;
-		//console.log(query);
+
+	update_profile : function (profile_id, icon, profile_name, display_name, full_name, profile_type, phone_number, email_address){
+		var query = "UPDATE `profile` SET 'icon'='" + icon + "', `profile_name`='" + profile_name + "' ,`email_address`='" + email_address + "', `display_name`='" + display_name + "', `full_name`='" + full_name + "', `profile_type`='" + profile_type + "', `phone_number`='" + phone_number + "' WHERE `profile_id`="+profile_id;
+		console.log(query);
 		this.db.transaction(
 			function(transaction) {
 				transaction.executeSql(query, [], App.database.nullDataHandler, App.database.errorHandler);
@@ -50,39 +45,49 @@ App.database = {
 		);
 	},
 	
-	addUser: function(d) {
-		if(d.current_user == undefined || d.current_user == null)
-			d.current_user = 0;
-
-		if (d.user_id != undefined) {
-			var data_array = [d.user_id, d.email, d.name, d.password, d.current_user];
-			var query = "INSERT OR IGNORE INTO `user` (`user_id`, `email`, `user_name`, 'password', `current_user`) \
-					VALUES (?, ?, ?, ?, ?);";
+	addProfile: function(d) {
+		if (d.profile_id != undefined) {
+			var data_array = [d.profile_id, d.icon, d.profile_name, d.display_name, d.full_name, d.profile_type, d.phone_number, d.email_address];
+			var query = "INSERT OR IGNORE INTO `profile` (`profile_id`, `icon`, `profile_name`, 'display_name', 'full_name',`profile_type`, `phone_number`, `email_address`) \
+					VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 		} else {
-			var data_array = [d.user_id, d.email, d.name, d.password,d.current_user];
-			var query = "INSERT INTO `user` (`user_id`, `email`, `user_name`, 'password',`current_user`) \
-					VALUES (?, ?, ?, ?, ?);";
+			var data_array = [d.profile_id, d.icon, d.profile_name, d.display_name, d.full_name, d.profile_type, d.phone_number, d.email_address];
+			var query = "INSERT INTO `profile` (`profile_id`, `icon`, `profile_name`, 'display_name', 'full_name', `profile_type`, `phone_number`, `email_address`) \
+					VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 		}		
 		this.db.transaction(
 			function(transaction) {
-				transaction.executeSql(query, data_array, App.database.handleInsertedUser, App.database.errorHandler);
+				transaction.executeSql(query, data_array, App.database.handleInsertedProfile, App.database.errorHandler);
 			}
 		);
 	},
-	handleInsertedUser:function(){
-        
+	handleInsertedProfile:function(transaction, results){
+		
 	},
-	getCurrentUser: function(ref) {
+	handleGetProfiles:function(transaction, results){
+		//console.log(results.rows.length);
+		if (results.rows.length == 0) {
+			Lungo.Router.section("profile_list");
+		}else{
+			
+			//for (i=0; i<results.rows.length;i++)
+			//{
+				console.log(results.rows.item(0));
+				App.selectedProfileName = results.rows.item(0).profile_name;
+			//}
+		}
+	},
+	getProfiles: function() {
 		//Query DB for logged in user.
-		var query = "SELECT * FROM `user`";
+		var query = "SELECT * FROM `profile`";
 		
 		this.db.transaction(
 			function(transaction) {
-				transaction.executeSql(query, [], ref.handleGetUserDB, App.database.errorHandler);
+				transaction.executeSql(query, [], App.database.handleGetProfiles, App.database.errorHandler);
 			}
 		);
 	},
-	destroyDB: function(reason, ref) {
+	destroyDB: function(reason) {
 		var command;
 		switch (reason) {
 			case "version":
@@ -96,26 +101,15 @@ App.database = {
 		}
 		this.db.transaction(
 			function(transaction) {
-				transaction.executeSql(command + " `user`", [], App.database.nullDataHandler, App.database.errorHandler);
+				transaction.executeSql(command + " `profile`", [], App.database.nullDataHandler, App.database.errorHandler);
 			}
 		);
-		if (reason != undefined && reason == 'logout') {
-			window.setTimeout(function() {
-				Lungo.Notification.show(
-					"check",                //Icon
-					"Success",              //Title
-					3,                      //Seconds
-					function() {
-						window.location.reload();
-					}
-				);
-			}, 1000);
-		}
+
 	},
 	errorHandler: function(transaction, error) {
 		// error.message is a human-readable string.
 		// error.code is a numeric error code
-		console.log('Oops.  Error was '+error.message+' (Code '+error.code+')');
+		console.log(''+error.message+' (Code '+error.code+')');
 
 		return false;
 	},

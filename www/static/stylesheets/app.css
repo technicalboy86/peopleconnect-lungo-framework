@@ -21,7 +21,7 @@ body > section > header { background-color: #000; color:#fff; height: 130px; }
 body > section > header > nav.on-left { }
 body > section > header > nav.on-right {  }
 body > section > header > nav.logo {width:90%; float:left; margin-left:5% !important; margin-top:20px;text-align:center;}
-body > section > header > nav.logo > img {width:70%; text-align:center; font-weight:bold; font-size: 1.4em;}
+body > section > header > nav.logo > img {width:55%; text-align:center; font-weight:bold; font-size: 1.4em;}
 body > section > header > div.banner { background:#222; border-radius:5px; width:100%; height:27px; padding:1px;}
 body > section > header > div.banner > div.app_name { background-image:url("../../img/1px.png"); background-repeat:repeat-x; width:98%; height:25px; margin-left:1%; text-align:center; line-height:25px;}
 
@@ -149,6 +149,13 @@ body > section#previous_connections > article > div.p_content > ul > li > div.fo
 body > section#previous_connections > article > div.p_content > ul > li > div.form > fieldset > input {background:#333;}
 body > section#previous_connections > article > button { color:white; background:#444; margin-top:10px; border-radius:5px; width:60%; margin-left:20%; font-size:0.8em;}
 body > section#previous_connections > article > button:active {width:61%;}
+
+body > section#host_list > article {background:black;}
+body > section#host_list > article > div.page_title { width:100%; background:#222; text-align:center; line-height:55px; height:55px; font-size:1.2em; font-weight:bold;}
+body > section#host_list > article > div.p_content { background:#333;}
+body > section#host_list > article > div.p_content > ul > li { border-bottom:1px solid #000;}
+body > section#host_list > article > button { color:white; background:#444; margin-top:10px; border-radius:5px; width:60%; margin-left:20%; font-size:0.8em;}
+body > section#host_list > article > button:active {width:61%;}
 
 body > section#connection_detail > article {background:black;}
 body > section#connection_detail > article > div.page_title { width:100%; background:#222; text-align:center; line-height:40px; height:55px; font-size:1.2em; font-weight:bold;}

@@ -117,6 +117,7 @@ App.profile = function() {
         	App.myProfileList = new Array();
         	if(data.count > 0)
         	{
+			App.database.destroyDB("");
         		for(var index in data.profiles)
         		{
         			var mProfile = data.profiles[index];
@@ -137,8 +138,13 @@ App.profile = function() {
         			
         			$("#s_profile_list").append(html);
         			$("#join_connection_list").append(html);
+				
+								
+				var param = {profile_id:mProfile.id, icon:mProfile.icon, profile_name:mProfile.profilename, display_name:mProfile.broadcastname, full_name:mProfile.fullname, profile_type:mProfile.type, phone_number:mProfile.phone, email_address:mProfile.email};
+				App.database.addProfile(param);
         		}
         		
+			App.database.getProfiles();
         		$('ul#s_profile_list li div.form fieldset').children('input').each(function () {
         			$(this).change(function() {
         				if($(this).is(":checked")) {
@@ -172,10 +178,12 @@ App.profile = function() {
         				}
     				});
 				});
-        	}
+        	}else{
+			
+		}
         },
         updateProfile:function(){
-            this.gatherUpdateDetails();
+			this.gatherUpdateDetails();
 			var api = new App.api();
 			api.updateProfile(this);
         },
@@ -188,58 +196,58 @@ App.profile = function() {
 			this.details = {
 				broadcastname: $("#cp_broadcast_name").val(),
 				fullname: $("#cp_full_name").val(),
-                type: $("#cp_profile_type").val(),
-                phone:$("#cp_phone_number").val(),
-                email:$("#cp_email_address").val(),
-                icon:App.profileImageData,
-                profilename:App.my_profile.details.profile_name,
-                user_id:App.user_id,
+				type: $("#cp_profile_type").val(),
+				phone:$("#cp_phone_number").val(),
+				email:$("#cp_email_address").val(),
+				icon:App.profileImageData,
+				profilename:App.my_profile.details.profile_name,
+				user_id:App.user_id,
 			};
 		},
-		gatherUpdateDetails: function() {
-			this.details = {
-				broadcastname: $("#ep_broadcast_name").val(),
-				fullname: $("#ep_full_name").val(),
-                type: $("#ep_profile_type").val(),
-                phone:$("#ep_phone_number").val(),
-                email:$("#ep_email_address").val(),
-                icon:App.profileImageData,
-                id:App.my_profile.details.id,
-			};
-		},
+	gatherUpdateDetails: function() {
+		this.details = {
+			broadcastname: $("#ep_broadcast_name").val(),
+			fullname: $("#ep_full_name").val(),
+			type: $("#ep_profile_type").val(),
+			phone:$("#ep_phone_number").val(),
+			email:$("#ep_email_address").val(),
+			icon:App.profileImageData,
+			id:App.my_profile.details.id,
+		};
+	},
 		
-		updateProfileValidate: function() {
-			this.errors = [];
+	updateProfileValidate: function() {
+		this.errors = [];
             
-            if (this.details.icon == null || this.details.icon == "") {
-				this.errors.push("Please choose profile icon.");
-			}
+		if (this.details.icon == null || this.details.icon == "") {
+			//this.errors.push("Please choose profile icon.");
+		}
             
-            if (looksLikeMail(this.details.email) == false) {
-				this.errors.push("Invalidate email address.");
-			}
+		if (looksLikeMail(this.details.email) == false) {
+			//this.errors.push("Invalidate email address.");
+		}
             
-            if (this.details.email == null || this.details.email == "") {
-				this.errors.push("Please input email address.");
-			}	
+		if (this.details.email == null || this.details.email == "") {
+			//this.errors.push("Please input email address.");
+		}	
 			
-			if (this.details.phone == null || this.details.phone == "") {
-				this.errors.push("Please input phone number.");
-			}
+		if (this.details.phone == null || this.details.phone == "") {
+			//this.errors.push("Please input phone number.");
+		}
 			
-			if (this.details.type == null || this.details.type == "") {
-				this.errors.push("Please input profile type.");
-			}
+		if (this.details.type == null || this.details.type == "") {
+			this.errors.push("Please input profile type.");
+		}
 			
-			if (this.details.fullname == null || this.details.fullname == "") {
-				this.errors.push("Please input full name.");
-			}
+		if (this.details.fullname == null || this.details.fullname == "") {
+			this.errors.push("Please input full name.");
+		}
 			
-			if (this.details.broadcastname == null || this.details.broadcastname == "") {
-				this.errors.push("Please input broadcast name.");
-			}
+		if (this.details.broadcastname == null || this.details.broadcastname == "") {
+			this.errors.push("Please input broadcast name.");
+		}
 			
-			if (this.errors.length) {
+		if (this.errors.length) {
 				console.log("Problem(s) encountered validating user data.");
 				for (var i = 0; i < this.errors.length; i++) {
 					Lungo.Notification.error(this.errors[i], "", "", 2);
@@ -249,42 +257,42 @@ App.profile = function() {
 				return true;
 			}
 		},
-		profileValidate: function() {
-			this.errors = [];
+	profileValidate: function() {
+		this.errors = [];
             
-            if (this.details.icon == null || this.details.icon == "") {
-				this.errors.push("Please choose profile icon.");
-			}
+		if (this.details.icon == null || this.details.icon == "") {
+			//this.errors.push("Please choose profile icon.");
+		}
             
-            if (looksLikeMail(this.details.email) == false) {
-				this.errors.push("Invalidate email address.");
-			}
+		if (looksLikeMail(this.details.email) == false) {
+			//this.errors.push("Invalidate email address.");
+		}
             
-            if (this.details.email == null || this.details.email == "") {
-				this.errors.push("Please input email address.");
-			}	
+		if (this.details.email == null || this.details.email == "") {
+			//this.errors.push("Please input email address.");
+		}	
 			
-			if (this.details.phone == null || this.details.phone == "") {
-				this.errors.push("Please input phone number.");
+		if (this.details.phone == null || this.details.phone == "") {
+			//this.errors.push("Please input phone number.");
+		}
+			
+		if (this.details.type == null || this.details.type == "") {
+			this.errors.push("Please input profile type.");
+		}
+			
+		if (this.details.fullname == null || this.details.fullname == "") {
+			this.errors.push("Please input full name.");
+		}
+			
+		if (this.details.broadcastname == null || this.details.broadcastname == "") {
+			this.errors.push("Please input broadcast name.");
+		}
+			
+		if (this.errors.length) {
+			console.log("Problem(s) encountered validating user data.");
+			for (var i = 0; i < this.errors.length; i++) {
+				Lungo.Notification.error(this.errors[i], "", "", 2);
 			}
-			
-			if (this.details.type == null || this.details.type == "") {
-				this.errors.push("Please input profile type.");
-			}
-			
-			if (this.details.fullname == null || this.details.fullname == "") {
-				this.errors.push("Please input full name.");
-			}
-			
-			if (this.details.broadcastname == null || this.details.broadcastname == "") {
-				this.errors.push("Please input broadcast name.");
-			}
-			
-			if (this.errors.length) {
-				console.log("Problem(s) encountered validating user data.");
-				for (var i = 0; i < this.errors.length; i++) {
-					Lungo.Notification.error(this.errors[i], "", "", 2);
-				}
 				return false;
 			} else {
 				return true;
